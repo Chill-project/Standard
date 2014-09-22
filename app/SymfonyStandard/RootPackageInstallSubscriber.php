@@ -32,8 +32,7 @@ class RootPackageInstallSubscriber implements EventSubscriberInterface
     {
         return array(
             ScriptEvents::POST_INSTALL_CMD => array(
-                array('setupNewDirectoryStructure', 512),
-                array('installAcmeDemoBundle', 0)
+                array('setupNewDirectoryStructure', 512)
             ),
         );
     }
