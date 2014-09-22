@@ -1,0 +1,2 @@
+cl_chill_main:
+   resource: "@CLChillMainBundle/Resources/config/routing.yml"
