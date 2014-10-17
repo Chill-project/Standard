@@ -1,5 +1,5 @@
 {
-    "name": "champs-libres/chill-standard",
+    "name": "chill-project/chill-standard",
     "license": "GPL-3.0",
     "type": "project",
     "description": "The Chill distribution",
@@ -10,7 +10,7 @@
     "require": {
         "php": "~5.5",
         "symfony/symfony": "2.5.*",
-        "champs-libres/chill-main": "dev-master",
+        "chill-project/chill-main": "dev-master",
         "doctrine/orm": "2.5.*@dev",
         "doctrine/dbal": "~2.5@dev",
         "doctrine/common": "~2.4@dev",
