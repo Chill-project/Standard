@@ -10,7 +10,7 @@
     "require": {
         "php": "~5.5",
         "symfony/symfony": "2.5.*",
-        "chill-project/chill-main": "dev-master",
+        "chill-project/main": "dev-master",
         "doctrine/orm": "2.5.*@dev",
         "doctrine/dbal": "~2.5@dev",
         "doctrine/common": "~2.4@dev",
