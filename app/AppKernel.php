@@ -14,7 +14,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new CL\Chill\MainBundle\CLChillMainBundle(),
+            new Chill\MainBundle\ChillMainBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
         );
 
