@@ -6,10 +6,16 @@
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
+
+
+
+
+
+
     "minimum-stability": "dev",
     "require": {
         "php": "~5.5",
-        "symfony/symfony": "2.5.*",
+        "symfony/symfony": "2.6.x-dev@dev",
         "chill-project/main": "dev-master",
         "doctrine/orm": "2.5.*@dev",
         "doctrine/dbal": "~2.5@dev",
@@ -17,7 +23,8 @@
         "doctrine/doctrine-bundle": "~1.2@dev",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "doctrine/doctrine-fixtures-bundle": "~2.2@dev"
     },
    "require-dev": {
         "sensio/generator-bundle": "~2.3"
