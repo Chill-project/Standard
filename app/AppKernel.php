@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Chill\MainBundle\ChillMainBundle(),
             new Chill\CustomFieldsBundle\ChillCustomFieldsBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Chill\PersonBundle\ChillPersonBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
