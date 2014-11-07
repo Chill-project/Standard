@@ -1,5 +1,12 @@
 security:
     providers:
+        chain_provider:
+            chain :
+                providers: [in_memory, users]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: olala, roles: 'ROLE_ADMIN' }
         users:
             entity:
                 class: Chill\MainBundle\Entity\User
@@ -8,6 +15,7 @@ security:
     encoders:
         Chill\MainBundle\Entity\User: 
             algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User: plaintext
 
     firewalls:
         dev:
