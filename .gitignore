@@ -11,3 +11,7 @@
 /bin/
 /composer.phar
 *~
+.DS_Store
+composer.lock
+web/css/
+web/js/
