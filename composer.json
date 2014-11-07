@@ -7,15 +7,10 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
 
-
-
-
-
-
     "minimum-stability": "dev",
     "require": {
         "php": "~5.5",
-        "symfony/symfony": "2.6.x-dev@dev",
+        "symfony/symfony": "2.5.x-dev@dev",
         "chill-project/main": "dev-master",
         "doctrine/orm": "2.5.*@dev",
         "doctrine/dbal": "~2.5@dev",
