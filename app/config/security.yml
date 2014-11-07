@@ -14,19 +14,13 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-            
-            
         default:
             anonymous: ~
-            
             form_login:
                 csrf_parameter: _csrf_token
                 intention: authenticate
                 csrf_provider: form.csrf_provider
-            
             logout: ~
-            
-            
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
