@@ -4,3 +4,7 @@ chill_main:
 cl_custom_fields:
    resource: .
    type: chill_routes
+   
+chill_person:
+    resource: .
+    type: chill_routes_person
