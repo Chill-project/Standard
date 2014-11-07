@@ -1,2 +1,6 @@
 chill_main:
    resource: "@ChillMainBundle/Resources/config/routing.yml"
+
+cl_custom_fields:
+   resource: .
+   type: chill_routes
