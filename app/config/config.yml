@@ -42,6 +42,7 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -57,3 +58,5 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+chill_main:
+    available_languages: [ fr, nl, en ]
