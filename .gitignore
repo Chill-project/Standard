@@ -15,3 +15,8 @@
 composer.lock
 web/css/
 web/js/
+
+#eclipse
+.buildpath
+.project
+.settings/
