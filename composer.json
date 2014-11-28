@@ -45,7 +45,14 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Chill\\MainBundle\\Composer\\Migrations::synchronizeMigrations"
+        ],
+        "post-package-install": [
+            "Chill\\MainBundle\\Composer\\Migrations::synchronizeMigrations"
+        ],
+        "post-package-update" : [
+            "Chill\\MainBundle\\Composer\\Migrations::synchronizeMigrations"
         ]
     },
     "config": {
