@@ -7,23 +7,22 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
 
-    "minimum-stability": "dev",
     "require": {
         "php": "~5.5",
-        "symfony/symfony": "2.5.x-dev@dev",
+        "symfony/symfony": "~2.5",
         "chill-project/main": "dev-master",
-        "doctrine/orm": "2.5.*@dev",
-        "doctrine/dbal": "~2.5@dev",
-        "doctrine/common": "~2.4@dev",
-        "doctrine/doctrine-bundle": "~1.2@dev",
+        "doctrine/orm": "2.5.x-dev@dev",
+        "doctrine/dbal": "~2.5@RC",
+        "doctrine/common": "~2.4",
+        "doctrine/doctrine-bundle": "~1.2",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-fixtures-bundle": "~2.2@dev",
-        "chill-project/custom-fields": "dev-master",
-        "chill-project/report": "dev-master",
-        "chill-project/person": "dev-master",
-        "chill-project/icpc2": "dev-master"
+        "chill-project/custom-fields": "dev-master@dev",
+        "chill-project/report": "dev-master@dev",
+        "chill-project/person": "dev-master@dev",
+        "chill-project/icpc2": "dev-master@dev"
     },
    "require-dev": {
         "sensio/generator-bundle": "~2.3"
