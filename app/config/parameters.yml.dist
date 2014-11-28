@@ -1,4 +1,5 @@
 parameters:
+    admin_password:    change_this
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     symfony
