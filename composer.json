@@ -22,7 +22,9 @@
         "chill-project/custom-fields": "dev-master@dev",
         "chill-project/report": "dev-master@dev",
         "chill-project/person": "dev-master@dev",
-        "chill-project/icpc2": "dev-master@dev"
+        "chill-project/icpc2": "dev-master@dev",
+        "doctrine/doctrine-migrations-bundle": "dev-master@dev",
+        "doctrine/migrations": "~1.0@dev"
     },
    "require-dev": {
         "sensio/generator-bundle": "~2.3"
