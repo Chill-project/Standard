@@ -4,7 +4,8 @@
     "type": "project",
     "description": "The Chill distribution",
     "autoload": {
-        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
+        "psr-0": { "": "src/", "SymfonyStandard": "app/"},
+        "psr-4": {"Chill\\Composer\\" : "app/Composer/"}
     },
 
     "require": {
@@ -48,6 +49,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+        ],
+        "post-package-install": [
+            "Chill\\MainBundle\\Composer\\Migrations::synchronizeMigrations"
+        ],
+        "post-package-update" : [
+            "Chill\\MainBundle\\Composer\\Migrations::synchronizeMigrations"
         ]
     },
     "config": {
