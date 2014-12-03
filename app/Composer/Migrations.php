@@ -20,8 +20,9 @@
 
 namespace Chill\Composer;
 
-use Composer\Script\PackageEvent;
+use Composer\Script\CommandEvent;
 use Symfony\Component\Filesystem\Filesystem;
+use Composer\IO\IOInterface;
 
 /**
  * Copy migrations files into expected dir
@@ -31,22 +32,79 @@ use Symfony\Component\Filesystem\Filesystem;
 class Migrations
 {
     
-    public static function synchronizeMigrations(PackageEvent $event)
+    public static function synchronizeMigrations(CommandEvent $event)
     {
         $fs = new FileSystem();
-        $package = $event->getOperation()->getPackage();
+        
+        $packages = $event->getComposer()->getRepositoryManager()
+              ->getLocalRepository()->getPackages();
+        $installer = $event->getComposer()->getInstallationManager();
         $appMigrationDir = getcwd().'/app/DoctrineMigrations';
-        $migrationsDir = $package->getTargetDir().'/Resources/migrations';
-        if (file_exists($migrationsDir) && is_dir($migrationsDir)) {
-            $migrationsFiles = scandir($migrationsDir);
-            foreach ($migrationsFiles as $file) {
-                echo "copying $file \n";
-                $fs->copy($migrationsDir.'/'.$file, $appMigrationsDir.'/'.$file);
-                
+        $io = $event->getIO();
+        
+        $areFileMigrated = array();
+        foreach($packages as $package) {
+            //get path
+            $installPath = $installer->getInstallPath($package);
+            $installSuffix = isset($package->getExtra()['migration-source-dir']) ? 
+                  $package->getExtra()['migration-source'] : 'Resources/migrations';
+            $migrationDir = $installPath.'/'.$installSuffix;
+            
+            //check for files and copy them
+            if (file_exists($migrationDir)) {
+                foreach (glob($migrationDir.'/Version*.php') as $fullPath) {
+                    if ($io->isVeryVerbose()) {
+                        $io->write("<info>Found a candidate migration file at $fullPath</info>");
+                    }
+                    
+                    $areFileMigrated[] = static::checkAndMoveFile($fullPath, $appMigrationDir, $io);
+                    
+                }
+            } elseif (isset($package->getExtra()['migration-source-dir'])) {
+                throw new \RuntimeException("The source migration dir '$migrationDir'"
+                      . " is not found");
             }
-        } else {
-            echo "$migrationsDir does not exists \n";
+            
         }
         
+        if (in_array(true, $areFileMigrated)) {
+            $io->write("<warning>Some migration files have been imported. "
+                  . "You should run `php app/console doctrine:migrations:status` and/or "
+                  . "`php app/console doctrine:migrations:migrate` to apply them to your DB.");
+        }
+    }
+    
+    private static function checkAndMoveFile($sourceMigrationFile, $appMigrationDir, IOInterface $io)
+    {
+        //get the file name
+        $explodedPath = explode('/', $sourceMigrationFile);
+        $filename = array_pop($explodedPath);
+        
+        if (file_exists($appMigrationDir.'/'.$filename)) {
+            if (md5_file($appMigrationDir.'/'.$filename) === md5_file($sourceMigrationFile)) {
+                if ($io->isVeryVerbose()) {
+                    $io->write("<info>found that $sourceMigrationFile is equal"
+                          . " to $appMigrationDir/$filename</info>");
+                }
+                $doTheMove = false;
+            } else {
+                $doTheMove = $io->askConfirmation("<question>The file \n"
+                      . " \t$sourceMigrationFile\n has the same name than the previous "
+                      . "migrated file located at \n\t$appMigrationDir/$filename\n "
+                      . "but the content is not equal.\n Overwrite the file ?[y,N]", false);
+            }
+        } else {
+            $doTheMove = true;
+        }
+        
+        //move the file
+        if ($doTheMove) {
+            $fs = new Filesystem();
+            $fs->copy($sourceMigrationFile, $appMigrationDir.'/'.$filename);
+            $io->write("<info>Importing '$filename' migration file</info>");
+            return true;
+        }
+        
+        return false;
     }
 }
