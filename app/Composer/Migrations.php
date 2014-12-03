@@ -32,6 +32,23 @@ use Composer\IO\IOInterface;
 class Migrations
 {
     
+    /**
+     * The migrations files are searched in __bundle_path__/Resources/migrations 
+     * OR in the path defined by the 'migration-source' directory in the extra 
+     * package information defined in package's composer.json file.
+     * 
+     * The script check whether file exists in the app/DoctrineMigrations dir. 
+     * If yes, the two files are compared using a md5 hash. If the hash is not 
+     * equal, the script ask user for a confirmation to copy them. If the files 
+     * are equal, they are ignored.
+     * 
+     * If the files are not present, or if the human behind the computer 
+     * confirmed the import, the migration files are copied into 
+     * app/DoctrineMigrations directory.
+     * 
+     * @param CommandEvent $event
+     * @throws \RuntimeException
+     */
     public static function synchronizeMigrations(CommandEvent $event)
     {
         $fs = new FileSystem();
