@@ -13,7 +13,7 @@
         "symfony/symfony": "~2.5",
         "chill-project/main": "dev-master",
         "doctrine/orm": "2.5.x-dev@dev",
-        "doctrine/dbal": "~2.5@RC",
+        "doctrine/dbal": "~2.5",
         "doctrine/common": "~2.4",
         "doctrine/doctrine-bundle": "~1.2",
         "sensio/distribution-bundle": "~3.0",
