@@ -1,19 +1,4 @@
-chill_main:
-   resource: "@ChillMainBundle/Resources/config/routing.yml"
-
-#TODO this part should be modified, see https://redmine.champs-libres.coop/issues/273
-
-#load routes for custom fields
-cl_custom_fields:
+#load routes for chil bundles
+chill_routes:
    resource: .
    type: chill_routes
-   
-#load route for persons
-chill_person:
-    resource: .
-    type: chill_routes_person
-
-#load route for reports
-chill_report:
-    resource: .
-    type: chill_routes_report
