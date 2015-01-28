@@ -23,9 +23,12 @@ namespace Chill\Composer;
 use Composer\Script\CommandEvent;
 use Symfony\Component\Filesystem\Filesystem;
 use Composer\IO\IOInterface;
+use Composer\Composer;
 
 /**
  * Copy migrations files into expected dir
+ * 
+ * The script is called on composer event post-install-cmd or post-update-cmd
  *
  * @author Julien Fastré <julien.fastre@champs-libres.coop>
  */
@@ -33,18 +36,19 @@ class Migrations
 {
     
     /**
+     * synchronize migrations files from the installed or updated bundle
+     * to the root bundle
+     * 
+     * The destination migration dir may be configured in root package with 
+     * `appMigrationsDir` key. Default to `app/DoctrineMigrations`
+     * 
      * The migrations files are searched in __bundle_path__/Resources/migrations 
      * OR in the path defined by the 'migration-source' directory in the extra 
      * package information defined in package's composer.json file.
      * 
-     * The script check whether file exists in the app/DoctrineMigrations dir. 
-     * If yes, the two files are compared using a md5 hash. If the hash is not 
-     * equal, the script ask user for a confirmation to copy them. If the files 
-     * are equal, they are ignored.
+     * If the file is already present AND equal the script ask user for a confirmation 
+     * to copy them.
      * 
-     * If the files are not present, or if the human behind the computer 
-     * confirmed the import, the migration files are copied into 
-     * app/DoctrineMigrations directory.
      * 
      * @param CommandEvent $event
      * @throws \RuntimeException
@@ -56,7 +60,7 @@ class Migrations
         $packages = $event->getComposer()->getRepositoryManager()
               ->getLocalRepository()->getPackages();
         $installer = $event->getComposer()->getInstallationManager();
-        $appMigrationDir = getcwd().'/app/DoctrineMigrations';
+        $appMigrationDir = self::getDestinationDir($event->getComposer());
         $io = $event->getIO();
         
         $areFileMigrated = array();
@@ -91,6 +95,15 @@ class Migrations
         }
     }
     
+    /**
+     * check if the file exists in dest dir, and if the file is equal. If not,
+     * move the file do destination dir.
+     * 
+     * @param string $sourceMigrationFile
+     * @param string $appMigrationDir
+     * @param IOInterface $io
+     * @return boolean
+     */
     private static function checkAndMoveFile($sourceMigrationFile, $appMigrationDir, IOInterface $io)
     {
         //get the file name
@@ -123,5 +136,21 @@ class Migrations
         }
         
         return false;
+    }
+    
+    /**
+     * Get the app migrations dir defined in root package, or 
+     * 'app/DoctrineMigrations' instead.
+     * 
+     * @param Composer $composer
+     * @return string
+     */
+    private static function getDestinationDir(Composer $composer)
+    {
+        $extras = $composer->getPackage()->getExtra();
+        
+        return (array_key_exists('appMigrationsDir',$extras)) ?
+            $extras['appMigrationsDir'] :
+            getcwd().'/app/DoctrineMigrations';
     }
 }
