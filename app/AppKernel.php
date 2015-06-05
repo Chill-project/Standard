@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Chill\PersonBundle\ChillPersonBundle(),
             new Chill\ReportBundle\ChillReportBundle(),
-            new Chill\ICPC2Bundle\ChillICPC2Bundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
