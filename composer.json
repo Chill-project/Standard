@@ -10,7 +10,7 @@
     "require": {
         "php": "~5.5",
         "symfony/symfony": "~2.7",
-        "chill-project/main": "dev-add_acl@dev",
+        "chill-project/main": "dev-master@dev",
         "doctrine/orm": "~2.4",
         "doctrine/dbal": "~2.5",
         "doctrine/common": "~2.4",
@@ -19,9 +19,9 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-fixtures-bundle": "~2.2@dev",
-        "chill-project/custom-fields": "dev-add_acl@dev",
-        "chill-project/person": "dev-add_acl@dev",
-        "chill-project/report": "dev-add_acl@dev",
+        "chill-project/custom-fields": "dev-master@dev",
+        "chill-project/person": "dev-master@dev",
+        "chill-project/report": "dev-master@dev",
         "doctrine/doctrine-migrations-bundle": "dev-master@dev",
         "doctrine/migrations": "~1.0@dev",
         "champs-libres/composer-bundle-migration": "~1.0"
