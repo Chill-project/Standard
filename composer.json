@@ -4,8 +4,7 @@
     "type": "project",
     "description": "The Chill distribution",
     "autoload": {
-        "psr-0": { "": "src/", "SymfonyStandard": "app/"},
-        "psr-4": {"Chill\\Composer\\" : "app/Composer/"}
+        "psr-0": { "": "src/", "SymfonyStandard": "app/"}
     },
 
     "require": {
@@ -25,7 +24,8 @@
         "chill-project/person": "dev-master@dev",
         "chill-project/icpc2": "dev-master@dev",
         "doctrine/doctrine-migrations-bundle": "dev-master@dev",
-        "doctrine/migrations": "~1.0@dev"
+        "doctrine/migrations": "~1.0@dev",
+        "champs-libres/composer-bundle-migration": "~1.0"
     },
    "require-dev": {
         "sensio/generator-bundle": "~2.3",
@@ -42,7 +42,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Chill\\Composer\\Migrations::synchronizeMigrations"
+            "ComposerBundleMigration\\Composer\\Migrations::synchronizeMigrations"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -51,7 +51,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Chill\\Composer\\Migrations::synchronizeMigrations"
+            "ComposerBundleMigration\\Composer\\Migrations::synchronizeMigrations"
         ]      
     },
     "config": {
