@@ -24,7 +24,8 @@
         "chill-project/report": "dev-master@dev",
         "doctrine/doctrine-migrations-bundle": "dev-master@dev",
         "doctrine/migrations": "~1.0@dev",
-        "champs-libres/composer-bundle-migration": "~1.0"
+        "champs-libres/composer-bundle-migration": "~1.0",
+        "chill-project/activity": "dev-master@dev"
     },
    "require-dev": {
         "sensio/generator-bundle": "~2.3",
