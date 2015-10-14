@@ -31,5 +31,7 @@ security:
             logout: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/[a-z]*/admin, roles: ROLE_ADMIN }
+        - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/([a-z]+/)?homepage, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/([a-z]+/)?admin, roles: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }
