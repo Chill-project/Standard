@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Chill\PersonBundle\ChillPersonBundle(),
             new Chill\ReportBundle\ChillReportBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Chill\ActivityBundle\ChillActivityBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

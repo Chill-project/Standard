@@ -31,7 +31,11 @@ security:
             logout: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/([a-z]+/)?homepage, roles: IS_AUTHENTICATED_FULLY }
+        # access for homepage, the homepage redirect admin to admin section
+        - { path: ^/$, roles: [ROLE_USER, ROLE_ADMIN] }
+        # idem
+        - { path: ^/([a-z]+/)?homepage, roles: [ROLE_USER, ROLE_ADMIN] }
+        # admin section, only for admin
         - { path: ^/([a-z]+/)?admin, roles: ROLE_ADMIN }
+        # other pages, only for regular user (no admin)
         - { path: ^/, roles: ROLE_USER }
