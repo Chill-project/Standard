@@ -6,29 +6,6 @@
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/"}
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url" : "/home/julien/Documents/dev/chill_tagging/Main"
-         },
-{
-            "type": "vcs",
-            "url" : "/home/julien/Documents/dev/chill_tagging/Person"
-         },
-{
-            "type": "vcs",
-            "url" : "/home/julien/Documents/dev/chill_tagging/Report"
-         },
-{
-            "type": "vcs",
-            "url" : "/home/julien/Documents/dev/chill_tagging/Activity"
-         },
-{
-            "type": "vcs",
-            "url" : "/home/julien/Documents/dev/chill_tagging/CustomFields"
-         }
-],
-
     "require": {
         "php": "~5.5",
         "symfony/symfony": "~2.7",
