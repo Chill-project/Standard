@@ -30,12 +30,12 @@ security:
                 csrf_provider: form.csrf_provider
             logout: ~
     access_control:
-        - { path: "^/login", roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # access for homepage, the homepage redirect admin to admin section
-        - { path: "^/$", roles: [ROLE_USER, ROLE_ADMIN] } 
+        - { path: ^/$, roles: [ROLE_USER, ROLE_ADMIN] }
         # idem
-        - { path: "^(/[a-z]{2,4}){0,1}/homepage", roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/([a-z]+/)?homepage, roles: [ROLE_USER, ROLE_ADMIN] }
         # admin section, only for admin
-        - { path: "^/[a-z]*/admin", roles: ROLE_ADMIN }
+        - { path: ^/([a-z]+/)?admin, roles: ROLE_ADMIN }
         # other pages, only for regular user (no admin)
-        - { path: "^/", roles: [ROLE_USER] }
+        - { path: ^/, roles: ROLE_USER }
